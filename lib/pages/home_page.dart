@@ -1,0 +1,192 @@
+import 'package:coffee_app/util/coffee_tile.dart';
+import 'package:coffee_app/util/coffee_type.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  // list of coffee types
+  final List coffeeType = [
+    [
+      'All', true
+    ],
+    [
+      'Black', false
+    ],
+    [
+      'Cappuccino', false
+    ],
+    [
+      'Latte', false
+    ],
+    [
+      'Tea', false
+    ],
+  ];  
+
+  // user tapped on coffee types
+  void coffeeTypeSelected(int index) {
+    setState(() {
+
+      for(int i = 0; i < coffeeType.length; i++ ) {
+        coffeeType[i][1] = false;
+      }
+
+      coffeeType[index][1] = true;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[900],
+      appBar: AppBar(
+        leading: Icon(
+          Icons.menu,
+          color: Colors.orange,
+        ),
+        title: Text(
+          'Coffee App',
+          style: GoogleFonts.bebasNeue(
+            color: Colors.orange
+          ),
+        ),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(10),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: BottomNavigationBar(
+            items: [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home'
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.favorite),
+                label: 'Favorites'
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: 'Settings'
+              ),
+            ],
+            // currentIndex: _selectedIndex,
+            selectedItemColor: Colors.orange,
+          ),
+        ),
+      ),
+      body: Column(
+        children: [
+          // Find the best coffee for you
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 25.0,
+            ),
+            child: Text(
+              'Find the best coffee for you',
+              style: GoogleFonts.bebasNeue(
+                fontSize: 60,
+                color: Colors.orange
+              ),
+            ),
+          ),
+          
+          SizedBox(height: 5,),
+    
+          // SearchBar
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 25,
+            ),
+            child: TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                hintText: 'Find your coffee...',
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.orange
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.grey.shade600
+                  ),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 20,),
+
+          // horizontal listView of coffee types
+          Container(
+            height: 50,
+            padding: EdgeInsets.only(right: 10),
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: coffeeType.length,
+              itemBuilder: (context, index) {
+              return CoffeeType(
+                coffeeType: coffeeType[index][0], 
+                isSelected: coffeeType[index][1], 
+                onTap: () {
+                  coffeeTypeSelected(index);
+                }
+              );
+            })
+          ),
+    
+          // horizontal listView of coffee tiles
+          Expanded(
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                CoffeeTile(
+                  coffeeName: 'Black',
+                  coffeeImagePath: 'lib/images/black.png', 
+                  coffeePrice: '4.20', 
+                  coffeeDescription: 'With sugar', 
+                ),
+                CoffeeTile(
+                  coffeeName: 'Cappuccino',
+                  coffeeImagePath: 'lib/images/cappuccino.png', 
+                  coffeePrice: '4.20', 
+                  coffeeDescription: 'With milk', 
+                ),
+                CoffeeTile(
+                  coffeeName: 'Latte',
+                  coffeeImagePath: 'lib/images/latte.png', 
+                  coffeePrice: '4.20', 
+                  coffeeDescription: 'With almond milk', 
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    right: 30
+                  ),
+                  child: CoffeeTile(
+                    coffeeName: 'Tea',
+                    coffeeImagePath: 'lib/images/tea.png', 
+                    coffeePrice: '4.20', 
+                    coffeeDescription: 'With lemon', 
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+    
+  }
+}
