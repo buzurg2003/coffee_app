@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     [
       'Tea', false
     ],
-  ];  
+  ];
 
   // user tapped on coffee types
   void coffeeTypeSelected(int index) {
