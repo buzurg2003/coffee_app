@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-class Favorites extends StatelessWidget {
-  const Favorites({super.key});
+class FavoritesPage extends StatelessWidget {
+  const FavoritesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      backgroundColor: Colors.grey[900],
+    );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:coffee_app/pages/CoffeeTiles.dart/BlackCoffee.dart';
 import 'package:coffee_app/util/coffee_tile.dart';
 import 'package:coffee_app/util/coffee_type.dart';
 import 'package:flutter/material.dart';
@@ -45,47 +46,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[900],
-      appBar: AppBar(
-        leading: Icon(
-          Icons.menu,
-          color: Colors.orange,
-        ),
-        title: Text(
-          'Coffee App',
-          style: GoogleFonts.bebasNeue(
-            color: Colors.orange
-          ),
-        ),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-      ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(10),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: BottomNavigationBar(
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home'
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.favorite),
-                label: 'Favorites'
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                label: 'Settings'
-              ),
-            ],
-            // currentIndex: _selectedIndex,
-            selectedItemColor: Colors.orange,
-          ),
-        ),
-      ),
-      body: Column(
+    return Column(
         children: [
           // Find the best coffee for you
           Padding(
@@ -127,8 +88,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          
           SizedBox(height: 20,),
-
+    
           // horizontal listView of coffee types
           Container(
             height: 50,
@@ -157,18 +119,27 @@ class _HomePageState extends State<HomePage> {
                   coffeeImagePath: 'lib/images/black.png', 
                   coffeePrice: '4.20', 
                   coffeeDescription: 'With sugar', 
+                  onTap: () { 
+                    
+                  } 
                 ),
                 CoffeeTile(
                   coffeeName: 'Cappuccino',
                   coffeeImagePath: 'lib/images/cappuccino.png', 
                   coffeePrice: '4.20', 
                   coffeeDescription: 'With milk', 
+                  onTap: () { 
+
+                  }, 
                 ),
                 CoffeeTile(
                   coffeeName: 'Latte',
                   coffeeImagePath: 'lib/images/latte.png', 
                   coffeePrice: '4.20', 
                   coffeeDescription: 'With almond milk', 
+                  onTap: () { 
+                    
+                  }, 
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
@@ -179,14 +150,15 @@ class _HomePageState extends State<HomePage> {
                     coffeeImagePath: 'lib/images/tea.png', 
                     coffeePrice: '4.20', 
                     coffeeDescription: 'With lemon', 
+                    onTap: () { 
+
+                    }, 
                   ),
                 ),
               ],
             ),
           ),
         ],
-      ),
-    );
-    
+      );
   }
 }
