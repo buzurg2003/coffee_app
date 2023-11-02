@@ -1,4 +1,3 @@
-import 'package:coffee_app/pages/CoffeeTiles.dart/BlackCoffee.dart';
 import 'package:coffee_app/util/coffee_tile.dart';
 import 'package:coffee_app/util/coffee_type.dart';
 import 'package:flutter/material.dart';
