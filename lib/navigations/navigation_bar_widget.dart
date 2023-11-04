@@ -1,6 +1,8 @@
 import 'package:coffee_app/pages/favorites_page.dart';
 import 'package:coffee_app/pages/home_page.dart';
+import 'package:coffee_app/pages/notifications_page.dart';
 import 'package:coffee_app/pages/settings_page.dart';
+import 'package:coffee_app/pages/user_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -34,6 +36,32 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
+        actions: <Widget> [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context, 
+                MaterialPageRoute(builder: (context) => UserPage()),
+              );
+            }, 
+            icon: Icon(
+              Icons.account_circle,
+              color: Colors.orange,
+            ),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context, 
+                MaterialPageRoute(builder: (context) => NotificationsPage()),
+              );
+            }, 
+            icon: Icon(
+              Icons.add_alert,
+              color: Colors.orange,
+            ),
+          ),
+        ],
         title: Padding(
           padding: const EdgeInsets.only(
             left: 10
