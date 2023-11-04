@@ -1,3 +1,7 @@
+import 'package:coffee_app/pages/CoffeeTiles.dart/BlackCoffee.dart';
+import 'package:coffee_app/pages/CoffeeTiles.dart/CappuccinoCoffee.dart';
+import 'package:coffee_app/pages/CoffeeTiles.dart/LatteCoffee.dart';
+import 'package:coffee_app/pages/CoffeeTiles.dart/Tea.dart';
 import 'package:coffee_app/util/coffee_tile.dart';
 import 'package:coffee_app/util/coffee_type.dart';
 import 'package:flutter/material.dart';
@@ -118,8 +122,11 @@ class _HomePageState extends State<HomePage> {
                   coffeeImagePath: 'lib/images/black.png', 
                   coffeePrice: '4.20', 
                   coffeeDescription: 'With sugar', 
-                  onTap: () { 
-                    
+                  onTap: () {
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => BlackCoffee()),
+                    );
                   } 
                 ),
                 CoffeeTile(
@@ -128,7 +135,10 @@ class _HomePageState extends State<HomePage> {
                   coffeePrice: '4.20', 
                   coffeeDescription: 'With milk', 
                   onTap: () { 
-                    
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => CappuccinoCoffee()),
+                    );
                   }, 
                 ),
                 CoffeeTile(
@@ -137,7 +147,10 @@ class _HomePageState extends State<HomePage> {
                   coffeePrice: '4.20', 
                   coffeeDescription: 'With almond milk', 
                   onTap: () { 
-                    
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(builder: (context) => LatteCoffee()),
+                    );
                   }, 
                 ),
                 Padding(
@@ -150,7 +163,10 @@ class _HomePageState extends State<HomePage> {
                     coffeePrice: '4.20', 
                     coffeeDescription: 'With lemon', 
                     onTap: () { 
-
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => Tea()),
+                      );
                     }, 
                   ),
                 ),
