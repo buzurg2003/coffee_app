@@ -1,6 +1,5 @@
 import 'package:coffee_app/pages/favorites_page.dart';
 import 'package:coffee_app/pages/home_page.dart';
-import 'package:coffee_app/pages/notifications_page.dart';
 import 'package:coffee_app/pages/settings_page.dart';
 import 'package:coffee_app/pages/user_page.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +33,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
         actions: <Widget> [
@@ -49,18 +49,42 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
               color: Colors.orange,
             ),
           ),
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context, 
-                MaterialPageRoute(builder: (context) => NotificationsPage()),
-              );
-            }, 
-            icon: Icon(
-              Icons.add_alert,
-              color: Colors.orange,
-            ),
-          ),
+          // IconButton(
+          //   onPressed: () {
+          //     showModalBottomSheet(
+          //       context: context,
+          //       isScrollControlled: true, // set this to true
+          //       builder: (_) {
+          //         return DraggableScrollableSheet(
+          //           expand: false,
+          //           builder: (_, controller) {
+          //             return Padding(
+          //               padding: const EdgeInsets.all(8.0),
+          //               child: ListView(
+          //                 children: [
+          //                   FilledButton.tonal(
+          //                     onPressed: () {}, 
+          //                     child: Text('Clean'),
+          //                   ),
+          //                   ListTile(
+          //                     leading: Icon(Icons.add_alert_outlined),
+          //                     title: Text('Title'),
+          //                     subtitle: Text('Subtitle'),
+          //                     onTap: () {},
+          //                   ),
+          //                 ],
+          //               ),
+          //             );
+          //           },
+          //         );
+          //       },
+          //     );
+          //   }, 
+          //   icon: Icon(
+          //     Icons.add_alert,
+          //     color: Colors.orange,
+          //   ),
+          // ),
         ],
         title: Padding(
           padding: const EdgeInsets.only(
@@ -87,8 +111,8 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
                 label: 'Home'
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.favorite),
-                label: 'Favorites'
+                icon: Icon(Icons.add_circle),
+                label: 'Added Items'
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
@@ -103,6 +127,5 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
       ),
       body: _widgetOptions[_selectedTab],
     );
-    
   }
 }
