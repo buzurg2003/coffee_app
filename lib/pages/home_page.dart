@@ -49,7 +49,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return SingleChildScrollView(
+      child: Column(
         children: [
           // Find the best coffee for you
           Padding(
@@ -112,8 +113,11 @@ class _HomePageState extends State<HomePage> {
             })
           ),
     
+          SizedBox(height: 20,),
+    
           // horizontal listView of coffee tiles
-          Expanded(
+          SizedBox(
+            height: 300,  // Adjust this height as per your design
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
@@ -174,6 +178,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
-      );
+      ),
+    );
   }
 }
