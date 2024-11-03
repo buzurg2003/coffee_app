@@ -1,11 +1,15 @@
-import 'package:coffee_app/pages/CoffeeTiles.dart/BlackCoffee.dart';
-import 'package:coffee_app/pages/CoffeeTiles.dart/CappuccinoCoffee.dart';
-import 'package:coffee_app/pages/CoffeeTiles.dart/LatteCoffee.dart';
-import 'package:coffee_app/pages/CoffeeTiles.dart/Tea.dart';
-import 'package:coffee_app/util/coffee_tile.dart';
-import 'package:coffee_app/util/coffee_type.dart';
 import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+
+import '../util/coffee_tile.dart';
+import '../util/coffee_type.dart';
+
+import 'CoffeeTiles.dart/BlackCoffee.dart';
+import 'CoffeeTiles.dart/CappuccinoCoffee.dart';
+import 'CoffeeTiles.dart/LatteCoffee.dart';
+import 'CoffeeTiles.dart/Tea.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

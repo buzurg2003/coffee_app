@@ -1,9 +1,11 @@
-import 'package:coffee_app/pages/added_items.dart';
-import 'package:coffee_app/pages/home_page.dart';
-import 'package:coffee_app/pages/settings_page.dart';
-import 'package:coffee_app/pages/user_page.dart';
 import 'package:flutter/material.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+
+import '../pages/added_items.dart';
+import '../pages/home_page.dart';
+import '../pages/settings_page.dart';
+import '../pages/user_page.dart';
 
 class NavigationBarWidget extends StatefulWidget {
   const NavigationBarWidget({super.key});
