@@ -1,5 +1,4 @@
 import 'package:coffee_app/pages/added_items.dart';
-import 'package:coffee_app/pages/favorites_page.dart';
 import 'package:coffee_app/pages/home_page.dart';
 import 'package:coffee_app/pages/settings_page.dart';
 import 'package:coffee_app/pages/user_page.dart';
@@ -47,42 +46,6 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
             }, 
             icon: Icon(
               Icons.account_circle,
-              color: Colors.orange,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                isScrollControlled: true, // set this to true
-                builder: (_) {
-                  return DraggableScrollableSheet(
-                    expand: false,
-                    builder: (_, controller) {
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListView(
-                          children: [
-                            FilledButton.tonal(
-                              onPressed: () {}, 
-                              child: Text('Clean'),
-                            ),
-                            ListTile(
-                              leading: Icon(Icons.add_alert_outlined),
-                              title: Text('Title'),
-                              subtitle: Text('Subtitle'),
-                              onTap: () {},
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                  );
-                },
-              );
-            }, 
-            icon: Icon(
-              Icons.add_alert,
               color: Colors.orange,
             ),
           ),

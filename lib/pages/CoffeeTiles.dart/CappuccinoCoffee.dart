@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class CappuccinoCoffee extends StatelessWidget {
@@ -13,13 +14,23 @@ class CappuccinoCoffee extends StatelessWidget {
     required this.coffeeDescription,
   });
 
+  // Function to add coffee item to Firestore
+  Future<void> addToFirestore() async {
+    await FirebaseFirestore.instance.collection('added_items').add({
+      'name': coffeeName,
+      'price': coffeePrice,
+      'description': coffeeDescription,
+      'imagePath': coffeeImagePath,
+      'timestamp': FieldValue.serverTimestamp(),
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     const String descriptionText = 
     'Cappuccino is a classic espresso-based coffee drink that originated in Italy. It is traditionally made with equal parts of espresso, steamed milk, and a layer of frothy milk foam on top. ';
 
     return Scaffold(
-      backgroundColor: Colors.black87, // Dark background
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -84,29 +95,8 @@ class CappuccinoCoffee extends StatelessWidget {
         
               // Quantity Row
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  // Quantity Selector
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          // Implement decrement functionality
-                        },
-                        icon: Icon(Icons.remove, color: Colors.orange),
-                      ),
-                      Text(
-                        '2', // You can replace this with a variable to control quantity
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          // Implement increment functionality
-                        },
-                        icon: Icon(Icons.add, color: Colors.orange),
-                      ),
-                    ],
-                  ),
                   // Coffee Price
                   Text(
                     '\$$coffeePrice',
@@ -143,8 +133,17 @@ class CappuccinoCoffee extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      onPressed: () {
-                        // Implement add to cart functionality
+                      onPressed: () async {
+                        await addToFirestore();
+                        // Show confirmation
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: const Text(
+                              'The coffee item has been added to your cart.'
+                            ),
+                            duration: Duration(seconds: 1),
+                          ),
+                        );
                       },
                       child: Text(
                         'Add to Cart',

@@ -1,21 +1,31 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class CoffeeTile extends StatelessWidget {
-
   final String coffeeImagePath;
   final String coffeeName;
   final String coffeePrice;
   final String coffeeDescription;
-  
   final VoidCallback onTap;
 
   CoffeeTile({
-    required this.coffeeImagePath, 
-    required this.coffeeName, 
-    required this.coffeeDescription, 
-    required this.coffeePrice, 
+    required this.coffeeImagePath,
+    required this.coffeeName,
+    required this.coffeeDescription,
+    required this.coffeePrice,
     required this.onTap,
   });
+
+  // Function to add coffee item to Firestore
+  Future<void> addToFirestore() async {
+    await FirebaseFirestore.instance.collection('added_items').add({
+      'name': coffeeName,
+      'price': coffeePrice,
+      'description': coffeeDescription,
+      'imagePath': coffeeImagePath,
+      'timestamp': FieldValue.serverTimestamp(),
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +46,11 @@ class CoffeeTile extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-          
               // Coffee image
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.asset(coffeeImagePath)
+                child: Image.asset(coffeeImagePath),
               ),
-          
               Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 8,
@@ -54,11 +62,8 @@ class CoffeeTile extends StatelessWidget {
                     // Coffee name
                     Text(
                       coffeeName,
-                      style: TextStyle(
-                        fontSize: 23,
-                        color: Colors.orange
-                      ),
-                    ),            
+                      style: TextStyle(fontSize: 23, color: Colors.orange),
+                    ),
                     // Coffee Description
                     Text(
                       coffeeDescription,
@@ -70,35 +75,29 @@ class CoffeeTile extends StatelessWidget {
                   ],
                 ),
               ),
-              
               // price
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       '\$ $coffeePrice',
-                      style: TextStyle(
-                        fontSize: 17
-                      ),
+                      style: TextStyle(fontSize: 17),
                     ),
                     InkWell(
-                      onTap: () => showDialog(
-                        context: context, 
-                        builder: (BuildContext context) => AlertDialog(
-                          title: const Text('Item was added'),
-                          content: const Text('AlertDialog description'),
-                          actions: <Widget>[
-                            TextButton(
-                              onPressed: () => Navigator.pop(context, 'OK'),
-                              child: const Text('OK'),
+                      onTap: () async {
+                        await addToFirestore();
+                        // Show confirmation
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: const Text(
+                              'The coffee item has been added to your cart.'
                             ),
-                          ],
-                        ),
-                      ),
+                            duration: Duration(seconds: 1),
+                          ),
+                        );
+                      },
                       child: Container(
                         padding: EdgeInsets.all(1),
                         decoration: BoxDecoration(
@@ -107,7 +106,7 @@ class CoffeeTile extends StatelessWidget {
                         ),
                         child: Icon(Icons.add),
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),

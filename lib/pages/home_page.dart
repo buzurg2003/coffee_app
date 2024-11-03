@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextField(
-              controller: searchController, // Set the controller here
+              controller: searchController, 
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.search),
                 hintText: 'Find your coffee...',
