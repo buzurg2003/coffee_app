@@ -153,7 +153,7 @@ class _HomePageState extends State<HomePage> {
 
           // Horizontal ListView of coffee types
           Container(
-            height: 50,
+            height: 25,
             padding: EdgeInsets.only(right: 10),
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
@@ -245,6 +245,81 @@ class _HomePageState extends State<HomePage> {
                       );
                     }
                   },
+                );
+              },
+            ),
+          ),
+          // Vertical notification-style ListView of coffee items
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: filteredCoffeeItems.length,
+              itemBuilder: (context, index) {
+                var coffee = filteredCoffeeItems[index];
+                return Card(
+                  margin: EdgeInsets.symmetric(vertical: 8.0),
+                  child: ListTile(
+                    leading: Image.asset(coffee['imagePath'], width: 50, height: 50, fit: BoxFit.cover),
+                    title: Text(coffee['name'], style: TextStyle(fontWeight: FontWeight.bold)),
+                    subtitle: Text(coffee['description']),
+                    trailing: Text('\$${coffee['price']}', style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold)),
+                    onTap: () {
+                      if (coffee['type'] == 'Black') {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BlackCoffee(
+                              coffeeName: coffee['name'],
+                              coffeeImagePath: coffee['imagePath'],
+                              coffeePrice: coffee['price'],
+                              coffeeDescription: coffee['description'],
+                            ),
+                          ),
+                        );
+                      }
+                      if (coffee['type'] == 'Cappuccino') {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CappuccinoCoffee(
+                              coffeeName: coffee['name'],
+                              coffeeImagePath: coffee['imagePath'],
+                              coffeePrice: coffee['price'],
+                              coffeeDescription: coffee['description'],
+                            ),
+                          ),
+                        );
+                      }
+                      if (coffee['type'] == 'Latte') {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LatteCoffee(
+                              coffeeName: coffee['name'],
+                              coffeeImagePath: coffee['imagePath'],
+                              coffeePrice: coffee['price'],
+                              coffeeDescription: coffee['description'],
+                            ),
+                          ),
+                        );
+                      }
+                      if (coffee['type'] == 'Tea') {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Tea(
+                              coffeeName: coffee['name'],
+                              coffeeImagePath: coffee['imagePath'],
+                              coffeePrice: coffee['price'],
+                              coffeeDescription: coffee['description'],
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                  ),
                 );
               },
             ),

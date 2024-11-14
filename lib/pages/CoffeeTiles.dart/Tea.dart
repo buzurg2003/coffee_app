@@ -32,6 +32,7 @@ class Tea extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        title: Text(coffeeName),
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(

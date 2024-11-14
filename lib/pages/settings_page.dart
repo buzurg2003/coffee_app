@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'user_page.dart';
+
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
@@ -20,6 +22,10 @@ class SettingsPage extends StatelessWidget {
               icon: Icons.person,
               onTap: () {
                 // Navigate to Profile Page
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (context) => UserPage()),
+                );
               },
             ),
             _buildCard(
@@ -39,17 +45,6 @@ class SettingsPage extends StatelessWidget {
               value: true, // This should be managed by your state management
               onChanged: (bool value) {
                 // Handle toggle
-              },
-            ),
-
-            // Theme Section
-            _buildSectionTitle('Theme'),
-            _buildSwitchCard(
-              context: context,
-              title: 'Dark Mode',
-              value: true, // This should be managed by your state management
-              onChanged: (bool value) {
-                // Handle theme toggle
               },
             ),
 

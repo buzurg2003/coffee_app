@@ -33,6 +33,7 @@ class LatteCoffee extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black87, // Dark background
       appBar: AppBar(
+        title: Text(coffeeName),
         elevation: 0,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
