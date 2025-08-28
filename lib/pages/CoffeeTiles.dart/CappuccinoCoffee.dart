@@ -28,8 +28,8 @@ class CappuccinoCoffee extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String descriptionText = 
-    'Cappuccino is a classic espresso-based coffee drink that originated in Italy. It is traditionally made with equal parts of espresso, steamed milk, and a layer of frothy milk foam on top. ';
+    const String descriptionText =
+        'Cappuccino is a classic espresso-based coffee drink that originated in Italy. It is traditionally made with equal parts of espresso, steamed milk, and a layer of frothy milk foam on top. ';
 
     return Scaffold(
       appBar: AppBar(
@@ -62,7 +62,7 @@ class CappuccinoCoffee extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-        
+
               // Coffee Name
               Text(
                 coffeeName,
@@ -73,7 +73,7 @@ class CappuccinoCoffee extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-        
+
               // Coffee Description Label
               Text(
                 coffeeDescription,
@@ -83,10 +83,10 @@ class CappuccinoCoffee extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-        
+
               // Description Text
               Text(
-                descriptionText,    
+                descriptionText,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -94,7 +94,7 @@ class CappuccinoCoffee extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 5),
-        
+
               // Quantity Row
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -110,9 +110,9 @@ class CappuccinoCoffee extends StatelessWidget {
                   ),
                 ],
               ),
-        
+
               SizedBox(height: 20),
-        
+
               // Add to Cart Button
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -124,7 +124,7 @@ class CappuccinoCoffee extends StatelessWidget {
                     },
                     icon: Icon(Icons.favorite_border, color: Colors.orange),
                   ),
-        
+
                   // Add to Cart Button
                   Expanded(
                     child: ElevatedButton(
@@ -141,15 +141,22 @@ class CappuccinoCoffee extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: const Text(
-                              'The coffee item has been added to your cart.'
+                              'The coffee item has been added to your cart.',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
                             ),
                             duration: Duration(seconds: 1),
+                            backgroundColor: Colors.orange,
                           ),
                         );
                       },
                       child: Text(
                         'Add to Cart',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),

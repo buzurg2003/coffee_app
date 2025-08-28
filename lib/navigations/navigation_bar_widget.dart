@@ -1,5 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../pages/added_items.dart';
@@ -110,7 +110,9 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
               .snapshots(),
           builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             }
             if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
               return Padding(
@@ -152,11 +154,15 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
                             ),
                             title: Text(
                               doc['name'] ?? 'No Title',
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(
+                                color: Colors.orange,
+                              ),
                             ),
                             subtitle: Text(
                               doc['description'] ?? '',
-                              style: TextStyle(color: Colors.grey[300]),
+                              style: TextStyle(
+                                color: Colors.orange[100],
+                              ),
                             ),
                           ),
                         );
@@ -175,7 +181,9 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
                       },
                       child: Text(
                         'Close',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),

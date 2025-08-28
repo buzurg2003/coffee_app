@@ -28,7 +28,8 @@ class Tea extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String descriptionText = 'Tea is a versatile beverage made by steeping cured or fresh tea leaves in hot water. It comes in various types, including black, green, white, oolong, and herbal, each offering distinct flavors and aromas.';
+    const String descriptionText =
+        'Tea is a versatile beverage made by steeping cured or fresh tea leaves in hot water. It comes in various types, including black, green, white, oolong, and herbal, each offering distinct flavors and aromas.';
 
     return Scaffold(
       appBar: AppBar(
@@ -61,7 +62,7 @@ class Tea extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-        
+
               // Coffee Name
               Text(
                 coffeeName,
@@ -72,7 +73,7 @@ class Tea extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-        
+
               // Coffee Description Label
               Text(
                 coffeeDescription,
@@ -82,10 +83,10 @@ class Tea extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-        
+
               // Description Text
               Text(
-                descriptionText,    
+                descriptionText,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -109,9 +110,9 @@ class Tea extends StatelessWidget {
                   ),
                 ],
               ),
-        
+
               SizedBox(height: 20),
-        
+
               // Add to Cart Button
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,7 +124,7 @@ class Tea extends StatelessWidget {
                     },
                     icon: Icon(Icons.favorite_border, color: Colors.orange),
                   ),
-        
+
                   // Add to Cart Button
                   Expanded(
                     child: ElevatedButton(
@@ -140,15 +141,22 @@ class Tea extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: const Text(
-                              'The coffee item has been added to your cart.'
+                              'The tea has been added to your cart.',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
                             ),
                             duration: Duration(seconds: 1),
+                            backgroundColor: Colors.orange,
                           ),
                         );
                       },
                       child: Text(
                         'Add to Cart',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),

@@ -140,14 +140,22 @@ class BlackCoffee extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: const Text(
-                                'The coffee item has been added to your cart.'),
+                              'The coffee item has been added to your cart.',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                            ),
                             duration: Duration(seconds: 1),
+                            backgroundColor: Colors.orange,
                           ),
                         );
                       },
                       child: Text(
                         'Add to Cart',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),

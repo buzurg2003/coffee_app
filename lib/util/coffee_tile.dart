@@ -99,8 +99,12 @@ class CoffeeTile extends StatelessWidget {
                           SnackBar(
                             content: const Text(
                               'The coffee item has been added to your cart.',
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
                             ),
                             duration: Duration(seconds: 1),
+                            backgroundColor: Colors.orange,
                           ),
                         );
                       },
