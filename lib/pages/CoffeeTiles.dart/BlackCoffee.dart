@@ -28,7 +28,8 @@ class BlackCoffee extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const String descriptionText = 'Black coffee is a brewed beverage made from ground coffee beans and water, without the addition of milk, sugar, or cream.';
+    const String descriptionText =
+        'Black coffee is a brewed beverage made from ground coffee beans and water, without the addition of milk, sugar, or cream.';
 
     return Scaffold(
       appBar: AppBar(
@@ -61,7 +62,7 @@ class BlackCoffee extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-        
+
               // Coffee Name
               Text(
                 coffeeName,
@@ -72,7 +73,7 @@ class BlackCoffee extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 10),
-        
+
               // Coffee Description Label
               Text(
                 coffeeDescription,
@@ -82,10 +83,10 @@ class BlackCoffee extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-        
+
               // Description Text
               Text(
-                descriptionText,    
+                descriptionText,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -93,7 +94,7 @@ class BlackCoffee extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 5),
-        
+
               // Quantity Row
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -108,9 +109,9 @@ class BlackCoffee extends StatelessWidget {
                   ),
                 ],
               ),
-        
+
               SizedBox(height: 20),
-        
+
               // Add to Cart Button
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -122,7 +123,7 @@ class BlackCoffee extends StatelessWidget {
                     },
                     icon: Icon(Icons.favorite_border, color: Colors.orange),
                   ),
-        
+
                   // Add to Cart Button
                   Expanded(
                     child: ElevatedButton(
@@ -139,8 +140,7 @@ class BlackCoffee extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: const Text(
-                              'The coffee item has been added to your cart.'
-                            ),
+                                'The coffee item has been added to your cart.'),
                             duration: Duration(seconds: 1),
                           ),
                         );

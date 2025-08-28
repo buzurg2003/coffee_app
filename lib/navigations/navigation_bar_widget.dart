@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../pages/added_items.dart';
-import '../pages/home_page.dart';
+import '../features/home/presentation/pages/home_page.dart';
 import '../pages/settings_page.dart';
 
 class NavigationBarWidget extends StatefulWidget {
@@ -44,8 +44,9 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
     if (snapshot.docs.isNotEmpty) {
       final latestItemTimestamp = snapshot.docs.first['timestamp'];
       // Convert Firestore Timestamp to int
-      final latestTimestampMillis = latestItemTimestamp.seconds * 1000 + latestItemTimestamp.millisecondsSinceEpoch % 1000;
-      
+      final latestTimestampMillis = latestItemTimestamp.seconds * 1000 +
+          latestItemTimestamp.millisecondsSinceEpoch % 1000;
+
       if (latestTimestampMillis > lastItemTimestamp) {
         setState(() {
           hasNewNotification = true;
@@ -65,13 +66,15 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
         final prefs = await SharedPreferences.getInstance();
         final latestItemTimestamp = snapshot.docs.first['timestamp'];
         // Convert Firestore Timestamp to int
-        final latestTimestampMillis = latestItemTimestamp.seconds * 1000 + latestItemTimestamp.millisecondsSinceEpoch % 1000;
-        
+        final latestTimestampMillis = latestItemTimestamp.seconds * 1000 +
+            latestItemTimestamp.millisecondsSinceEpoch % 1000;
+
         // Store the latest timestamp
         await prefs.setInt('lastItemTimestamp', latestTimestampMillis);
 
         setState(() {
-          hasNewNotification = true; // Set notification indicator when a new item is added
+          hasNewNotification =
+              true; // Set notification indicator when a new item is added
         });
       }
     });
@@ -87,7 +90,8 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
 
   void _showNotificationsBottomSheet(BuildContext context) {
     setState(() {
-      hasNewNotification = false; // Reset notification indicator when opening the sheet
+      hasNewNotification =
+          false; // Reset notification indicator when opening the sheet
     });
 
     showModalBottomSheet(
@@ -196,7 +200,10 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
               _showNotificationsBottomSheet(context);
             },
             icon: Icon(
-              hasNewNotification ? Icons.notifications_on : Icons.notifications, // Change icon based on notification status
+              hasNewNotification
+                  ? Icons.notifications_on
+                  : Icons
+                      .notifications, // Change icon based on notification status
               color: Colors.orange,
             ),
           ),

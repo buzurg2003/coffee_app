@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
-import '../util/coffee_tile.dart';
-import '../util/coffee_type.dart';
+import '../../../../util/coffee_tile.dart';
+import '../../../../util/coffee_type.dart';
 
-import 'CoffeeTiles.dart/BlackCoffee.dart';
-import 'CoffeeTiles.dart/CappuccinoCoffee.dart';
-import 'CoffeeTiles.dart/LatteCoffee.dart';
-import 'CoffeeTiles.dart/Tea.dart';
-
+import '../../../../pages/CoffeeTiles.dart/BlackCoffee.dart';
+import '../../../../pages/CoffeeTiles.dart/CappuccinoCoffee.dart';
+import '../../../../pages/CoffeeTiles.dart/LatteCoffee.dart';
+import '../../../../pages/CoffeeTiles.dart/Tea.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,28 +33,28 @@ class _HomePageState extends State<HomePage> {
   final List<Map<String, dynamic>> coffeeItems = [
     {
       'name': 'Black',
-      'imagePath': 'lib/images/black.png',
+      'imagePath': 'lib/assets/images/black.png',
       'price': '4.20',
       'description': 'With sugar',
       'type': 'Black'
     },
     {
       'name': 'Cappuccino',
-      'imagePath': 'lib/images/cappuccino.png',
+      'imagePath': 'lib/assets/images/cappuccino.png',
       'price': '4.20',
       'description': 'With milk',
       'type': 'Cappuccino'
     },
     {
       'name': 'Latte',
-      'imagePath': 'lib/images/latte.png',
+      'imagePath': 'lib/assets/images/latte.png',
       'price': '4.20',
       'description': 'With almond milk',
       'type': 'Latte'
     },
     {
       'name': 'Tea',
-      'imagePath': 'lib/images/tea.png',
+      'imagePath': 'lib/assets/images/tea.png',
       'price': '4.20',
       'description': 'With lemon',
       'type': 'Tea'
@@ -90,7 +89,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    searchController.dispose(); // Clean up the controller when the widget is disposed
+    searchController
+        .dispose(); // Clean up the controller when the widget is disposed
     super.dispose();
   }
 
@@ -108,9 +108,8 @@ class _HomePageState extends State<HomePage> {
         filteredCoffeeItems = List.from(coffeeItems);
       } else {
         // Filter based on the selected coffee type
-        filteredCoffeeItems = coffeeItems
-            .where((item) => item['type'] == selectedType)
-            .toList();
+        filteredCoffeeItems =
+            coffeeItems.where((item) => item['type'] == selectedType).toList();
       }
     });
   }
@@ -120,7 +119,7 @@ class _HomePageState extends State<HomePage> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          // Find the best coffee for you
+          // ! Find the best coffee for you
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: Text(
@@ -130,11 +129,11 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(height: 5),
 
-          // SearchBar
+          // ! SearchBar
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25),
             child: TextField(
-              controller: searchController, 
+              controller: searchController,
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.search),
                 hintText: 'Find your coffee...',
@@ -151,7 +150,7 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(height: 20),
 
-          // Horizontal ListView of coffee types
+          // ! Horizontal ListView of coffee types
           Container(
             height: 25,
             padding: EdgeInsets.only(right: 10),
@@ -171,7 +170,7 @@ class _HomePageState extends State<HomePage> {
           ),
           SizedBox(height: 20),
 
-          // Horizontal ListView of coffee tiles
+          // ! Horizontal ListView of coffee tiles
           SizedBox(
             height: 300, // Adjust this height as per your design
             child: ListView.builder(
@@ -185,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                   coffeePrice: coffee['price'],
                   coffeeDescription: coffee['description'],
                   onTap: () {
-                    // Navigate based on coffee type
+                    // ! Navigate based on coffee type
                     if (coffee['type'] == 'Black') {
                       Navigator.push(
                         context,
@@ -200,7 +199,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     }
 
-                    // Cappuccino
+                    // ! Cappuccino
                     if (coffee['type'] == 'Cappuccino') {
                       Navigator.push(
                         context,
@@ -215,7 +214,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     }
 
-                    // Latte
+                    // ! Latte
                     if (coffee['type'] == 'Latte') {
                       Navigator.push(
                         context,
@@ -230,7 +229,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     }
 
-                    // Tea
+                    // ! Tea
                     if (coffee['type'] == 'Tea') {
                       Navigator.push(
                         context,
@@ -249,9 +248,11 @@ class _HomePageState extends State<HomePage> {
               },
             ),
           ),
-          // Vertical notification-style ListView of coffee items
+          // ! Vertical notification-style ListView of coffee items
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15.0,
+            ),
             child: ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
@@ -261,10 +262,26 @@ class _HomePageState extends State<HomePage> {
                 return Card(
                   margin: EdgeInsets.symmetric(vertical: 8.0),
                   child: ListTile(
-                    leading: Image.asset(coffee['imagePath'], width: 50, height: 50, fit: BoxFit.cover),
-                    title: Text(coffee['name'], style: TextStyle(fontWeight: FontWeight.bold)),
+                    leading: Image.asset(
+                      coffee['imagePath'],
+                      width: 50,
+                      height: 50,
+                      fit: BoxFit.cover,
+                    ),
+                    title: Text(
+                      coffee['name'],
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     subtitle: Text(coffee['description']),
-                    trailing: Text('\$${coffee['price']}', style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold)),
+                    trailing: Text(
+                      '\$${coffee['price']}',
+                      style: TextStyle(
+                        color: Colors.orange,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                     onTap: () {
                       if (coffee['type'] == 'Black') {
                         Navigator.push(

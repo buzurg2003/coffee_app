@@ -63,7 +63,10 @@ class CoffeeTile extends StatelessWidget {
                     // Coffee name
                     Text(
                       coffeeName,
-                      style: TextStyle(fontSize: 23, color: Colors.orange),
+                      style: TextStyle(
+                        fontSize: 23,
+                        color: Colors.orange,
+                      ),
                     ),
                     // Coffee Description
                     Text(
@@ -78,7 +81,9 @@ class CoffeeTile extends StatelessWidget {
               ),
               // price
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -93,7 +98,7 @@ class CoffeeTile extends StatelessWidget {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: const Text(
-                              'The coffee item has been added to your cart.'
+                              'The coffee item has been added to your cart.',
                             ),
                             duration: Duration(seconds: 1),
                           ),

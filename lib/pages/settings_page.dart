@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../features/auth/presentation/cubits/auth_cubit.dart';
 import 'user_page.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -23,7 +25,7 @@ class SettingsPage extends StatelessWidget {
               onTap: () {
                 // Navigate to Profile Page
                 Navigator.push(
-                  context, 
+                  context,
                   MaterialPageRoute(builder: (context) => UserPage()),
                 );
               },
@@ -63,13 +65,19 @@ class SettingsPage extends StatelessWidget {
             SizedBox(height: 15),
             ElevatedButton(
               onPressed: () {
-                // Handle logout
+                final authCubit = context.read<AuthCubit>();
+                authCubit.logout();
               },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(vertical: 16),
-                backgroundColor: Colors.black12
+                backgroundColor: Colors.red.shade900,
               ),
-              child: Text('Logout'),
+              child: Text(
+                'Logout',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
           ],
         ),
@@ -82,7 +90,8 @@ class SettingsPage extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Text(
         title,
-        style: TextStyle(fontSize: 24, color: Colors.white), // Optional: Set text color
+        style: TextStyle(
+            fontSize: 24, color: Colors.white), // Optional: Set text color
       ),
     );
   }
@@ -96,7 +105,8 @@ class SettingsPage extends StatelessWidget {
     return Card(
       color: Colors.black54, // Set the card color to match the theme
       child: ListTile(
-        title: Text(title, style: TextStyle(color: Colors.white)), // Set text color
+        title: Text(title,
+            style: TextStyle(color: Colors.white)), // Set text color
         leading: Icon(icon, color: Colors.white), // Set icon color
         onTap: onTap,
       ),
@@ -112,7 +122,8 @@ class SettingsPage extends StatelessWidget {
     return Card(
       color: Colors.black54, // Set the card color to match the theme
       child: SwitchListTile(
-        title: Text(title, style: TextStyle(color: Colors.white)), // Set text color
+        title: Text(title,
+            style: TextStyle(color: Colors.white)), // Set text color
         value: value,
         onChanged: onChanged,
       ),
