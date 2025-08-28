@@ -74,4 +74,3 @@ class MyApp extends StatelessWidget {
 }
 
 // https://console.firebase.google.com/u/0/project/coffee-app-434da/firestore/databases/-default-/data/~2Fadded_items
-// ! https://youtu.be/LTgianlebzY?si=VJACY1hubxkpwNBC&t=3300 | 55:00
